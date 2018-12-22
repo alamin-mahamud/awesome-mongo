@@ -26,3 +26,19 @@
 >db.tutorialsPoint.drop()
 ```
 
+## Data Types
+1. string
+2. integer
+3. boolean
+4. double
+5. min/max keys
+6. arrays
+7. timestamp
+8. object
+9. null
+10. symbol
+11. date
+12. object ID
+13. binary data
+14. code
+15. regular expression
