@@ -1,5 +1,6 @@
 # Awesome MongoDB
-
+ 
+## Command History
 ```mongo shell
 >use DATABASE_NAME
 >db
