@@ -1,4 +1,44 @@
 # Awesome MongoDB
+
+
+## Features
+- Document DB
+- Ad hoc queries [field, range query, regular expression]
+    - return specific fields of documents and also include user-defined Javascript functions.
+    - return a random sample of reults of a given size.
+- Indexing - fields can be indexed with both primary and secondary indices.
+- Replication
+    1. high availability with replica sets
+    2. each replica set consists of two or more copies of the data.
+    3. each replica can act in the role of primary or secondary replica.
+    4. all reads and writes are done on the primary replica by default
+    5. when a primary fails then election process happens.
+    6. secondary can optionally serve read operations.
+- Load Balancing
+    - sharding [ a shard is a master with one or more slaves ]
+    - user chooses a shard key
+    - the shard key can be hashed to map to a shard - enabling an even data distribution.
+    - MongoDB can run on multiple servers, balancing the load or duplicating data to keep the system up and running in case of hardware failure.
+- File Storage
+    - GridFS with load balancing and data replication features over multiple machines
+    - GridFS divides a file into parts, or chunks and stores each of those chunks as a separate document.
+- Aggregation [analogous to Unix Pipes]
+    - aggregation pipeline [better performant for aggregation ops]
+    - map-reduce function [batch processing of data and aggregation ops]
+    - single-purpose aggregation
+- Server side javascript execution
+    - send js directly to the database to be executed.
+- Capped Collections
+    - fixed size collections
+    - after specified size acts like circular queue
+- transactions
+    - ACID transactions support.
+ 
+- Criticisms
+    - security
+        - default security configuration of MongoDB, allowing anyone to have full access to the dtabases, data stolen from 1000s of servers.
+        
+
  
 ## Command History
 ```mongo shell
