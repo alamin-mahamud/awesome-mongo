@@ -24,6 +24,16 @@
 >show collections
 >db.COLLECTION_NAME.drop()
 >db.tutorialsPoint.drop()
+>db.COLLECTION_NAME.insert(document)
+>db.mycol.insert({
+  _id: ObjectId(123123123afdaf1312),
+  title: 'MongoDB insertion',
+  description: 'inserting things in mongo db is dead simple',
+  by: 'tutorials point',
+  url: 'http://www.mongodb.com',
+  tags: ['mongodb', 'no-sql', 'replication, persistency']
+  likes: 100
+})
 ```
 
 ## Data Types
