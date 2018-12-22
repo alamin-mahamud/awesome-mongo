@@ -37,9 +37,12 @@
 - Criticisms
     - security
         - default security configuration of MongoDB, allowing anyone to have full access to the dtabases, data stolen from 1000s of servers.
-        
 
- 
+## _id:
+```bash
+_id: ObjectId(4 bytes timestamp, 3 bytes machine id, 2 bytes process id, 3 bytes incrementer)
+```
+
 ## Command History
 ```mongo shell
 >use DATABASE_NAME
@@ -75,6 +78,35 @@
   tags: ['mongodb', 'no-sql', 'replication, persistency']
   likes: 100
 })
+>db.getCollection('post').find({})
+>db.post.insert([
+   {
+      title: 'MongoDB Overview', 
+      description: 'MongoDB is no sql database',
+      by: 'tutorials point',
+      url: 'http://www.tutorialspoint.com',
+      tags: ['mongodb', 'database', 'NoSQL'],
+      likes: 100
+   },
+	
+   {
+      title: 'NoSQL Database', 
+      description: "NoSQL database doesn't have tables",
+      by: 'tutorials point',
+      url: 'http://www.tutorialspoint.com',
+      tags: ['mongodb', 'database', 'NoSQL'],
+      likes: 20, 
+      comments: [	
+         {
+            user:'user1',
+            message: 'My first comment',
+            dateCreated: new Date(2013,11,10,2,35),
+            like: 0 
+         }
+      ]
+   }
+])
+>db.getCollections('post').find({})
 ```
 
 ## Data Types
