@@ -43,6 +43,46 @@
 _id: ObjectId(4 bytes timestamp, 3 bytes machine id, 2 bytes process id, 3 bytes incrementer)
 ```
 
+## find
+### where
+- equality: `{<key>: <value>}`
+- less than: `{<key>: {$lt: <value>}}`
+- less than equals: `{<key>: {$lte: <value>}}``
+- greater than: `{<key>: {$gt: <value>}}`
+- greater than equals: `{<key>: {$gte: <value>}}`
+- not equals: `{<key>: {$ne: <value>}}`
+
+### and
+```bash
+>db.mycol.find({
+	$and: [
+		{key1: value1},
+		{key2: value2}
+	]
+}).pretty()
+```
+### or
+```bash
+>db.mycol.find({
+	$or: [
+		{key1: value1},
+		{key2: value2}
+	]
+}).pretty()
+```
+### `and` and `or`
+```bash
+>db.mycollection.find({
+	"likes": {$gt:10},
+	$or: [
+		{"by": "123"},
+		{"title": "456"}
+	]
+}).pretty()
+# likes > 10 and (by=="123" or title==456)
+```
+
+
 ## Command History
 ```mongo shell
 >use DATABASE_NAME
@@ -107,6 +147,7 @@ _id: ObjectId(4 bytes timestamp, 3 bytes machine id, 2 bytes process id, 3 bytes
    }
 ])
 >db.getCollections('post').find({})
+>db.getCollection('post').find({}).pretty()
 ```
 
 ## Data Types
