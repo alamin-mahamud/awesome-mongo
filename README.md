@@ -38,6 +38,7 @@
     - security
         - default security configuration of MongoDB, allowing anyone to have full access to the dtabases, data stolen from 1000s of servers.
 
+
 ## _id:
 ```bash
 _id: ObjectId(4 bytes timestamp, 3 bytes machine id, 2 bytes process id, 3 bytes incrementer)
@@ -166,3 +167,71 @@ _id: ObjectId(4 bytes timestamp, 3 bytes machine id, 2 bytes process id, 3 bytes
 13. binary data
 14. code
 15. regular expression
+
+## mongo shell
+
+* Without Authentication 
+
+``` bash
+# Run Local MongoDB on default Port
+mongo
+
+# Run Local MongoDB on a Non-default Port
+mongo --port 28015
+
+# use a connection string
+mongo mongodb://mongodb0.example.com:28015
+
+# Use a CLI option --host <host>:<port>
+mongo --host mongodb0.example.com:28015
+
+mongo --host mongodb0.example.com --port 28015
+```
+
+* MongoDB instance Requires Authentication
+
+``` bash
+mongo --host mongodb://alice@mongodb0.examples.com:28015/?authSource=admin
+```
+
+``` bash
+mongo --username alice --password --authenticationDatabase admin --host mongodb0.examples.com --port 28015
+```
+
+* Connect to a MongoDB Replica Set
+
+## Connection String
+* Standard Connection String Format
+
+``` bash
+mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+```
+
+* Example - connection to a replica set named test, with the following `mongod` hosts:
+  1. `db1.example.net` on port `27017` and
+  2. `db2.example.net` on port `2500`
+
+``` bash
+mongodb://db1.example.net:27017,db2.example.net:2500/?replicaSet=test
+```
+
+* Example - sharded cluster with the following `mongos` hosts:
+  1. `r1.example.net` on poort `27017` and 
+  2. `r2.example.net` on port 27018
+  
+  ``` bash
+  mongodb://r1.example.net:27017,r2.example.net:27017/
+  ```
+
+* Example :
+
+``` bash
+mongodb+srv://server.example.com/
+```
+
+```
+Record                            TTL   Class    Priority Weight Port  Target
+_mongodb._tcp.server.example.com. 86400 IN SRV   0        5      27317 mongodb1.example.com.
+_mongodb._tcp.server.example.com. 86400 IN SRV   0        5      27017 mongodb2.example.com.
+```
+
