@@ -39,6 +39,7 @@
         - default security configuration of MongoDB, allowing anyone to have full access to the dtabases, data stolen from 1000s of servers.
 
 
+
 ## _id:
 ```bash
 _id: ObjectId(4 bytes timestamp, 3 bytes machine id, 2 bytes process id, 3 bytes incrementer)
@@ -235,3 +236,10 @@ _mongodb._tcp.server.example.com. 86400 IN SRV   0        5      27317 mongodb1.
 _mongodb._tcp.server.example.com. 86400 IN SRV   0        5      27017 mongodb2.example.com.
 ```
 
+``` bash
+mongodb://mongodb1.example.com:27317,mongodb2.example.com:27017/?replicaSet=mySet&authSource=authDB
+```
+
+``` bash
+mongodb+srv://server.example.com/?connectTimeoutMS=300000&authSource=aDifferentAuthDB
+```
