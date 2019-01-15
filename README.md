@@ -243,3 +243,54 @@ mongodb://mongodb1.example.com:27317,mongodb2.example.com:27017/?replicaSet=mySe
 ``` bash
 mongodb+srv://server.example.com/?connectTimeoutMS=300000&authSource=aDifferentAuthDB
 ```
+
+* More Examples
+  - Database Server Running Locally
+  
+  ```bash
+  mongodb://localhost
+  ```
+  - admin Database
+  
+  ```bash
+  # The following connects and logs in to the admin database as user sysop with the password moon.
+  mongodb://sysop:moon@localhost
+  ```
+  
+  - records database
+  ```bash
+  mongodb://sysop:moon@localhost/records
+  ```
+  - Unix Domain Socket
+  Use a URL Encoded Connection string when connecting to a UNIX domain socket. the following connects to a UNIX domain socket with file path `/tmp/mongodb-27017.sock`
+  ```bash
+  mongodb://%2Ftmp%2Fmongodb-27017.sock
+  ```
+  
+  - Replica Set with Members on Different Machines
+  ```bash
+  mongodb://db1.example.net,db2.example.com/?replicaSet=test
+  ```
+  
+  - Replica set with members of localhost - 27017, 27018, 27019
+  ```bash
+  mongodb://localhost,localhost:27018,localhost:27019/?replicaSet=test
+  ```
+
+*  Replica Set with Read Distribution
+   - The following connects to a replica set with three members and distributes reads to the secondaries:
+   
+   ```bash
+   mongodb://example1.com,example2.com,example3.com/?replicaSet=test&readPreference=secondary
+   ```
+   - The following connects to a replica set with write concern configured to wait for replication to succeed on at least two members, with a two-second timeout.
+   
+   ```bash
+   mongodb://example1.com,example2.com,example3.com/?replicaSet=test&w=2&wtimeoutMS=2000
+   ```
+
+* Sharded Cluster
+
+``` bash
+mongodb://router1.example.com:27017,router2.example2.com:27017,router3.example3.com:27017/
+```
