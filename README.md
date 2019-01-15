@@ -201,6 +201,34 @@ mongo --username alice --password --authenticationDatabase admin --host mongodb0
 
 * Connect to a MongoDB Replica Set
 
+``` bash
+mongo mongodb://mongodb0.example.com.local:27017,mongodb1.example.com.local:27017,mongodb2.example.com.local:27017/?replicaSet=replA
+```
+	- TLS/SSL Connection
+	```bash
+	mongo mongodb://mongodb0.example.com.local:27017,mongodb1.example.com.local:27017,mongodb2.example.com.local:27017/?replicaSet=replA&ssl=true
+	```
+
+* Working with Mongo Shell
+
+``` bash
+db // display the database you are using
+use <database> // switch database
+show dbs // list all dbs
+db.getSiblingDB() // list databases without switching
+
+use myNewDatabase // new database automatically created
+db.myCollection.insertOne( { x: 1 } ); // automatically creating collection
+```
+
+* Format Printed Results
+
+``` bash
+db.myCollection.find().pretty()
+print() // to print w/o formatting
+print(tojson(<obj>)) == printjson()
+```
+
 ## Connection String
 * Standard Connection String Format
 
