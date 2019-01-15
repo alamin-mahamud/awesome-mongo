@@ -322,3 +322,38 @@ mongodb+srv://server.example.com/?connectTimeoutMS=300000&authSource=aDifferentA
 ``` bash
 mongodb://router1.example.com:27017,router2.example2.com:27017,router3.example3.com:27017/
 ```
+
+
+## Capped Collections
+* Fixed Size
+* high throughput ops
+* insert/retrieve based on insertion order
+* truncates oldest documents when memory exceeds
+
+``` bash
+# create 
+db.createCollection( "log", { capped: true, size: 100000 } )
+db.createCollection("log", { capped : true, size : 5242880, max : 5000 } )
+
+# query
+db.cappedCollection.find().sort( { $natural: -1 } )
+
+
+# check if a collection is capped
+db.collection.isCapped()
+
+# convert a collection to capped
+db.runCommand({"convertToCapped": "mycoll", size: 100000});
+# exclusive lock for this operation
+# other operations locks will be blocked.
+
+# automatically remove data after a specified period of time
+```
+
+* Tailable Cursor
+  - Similar to the Unix tail -f command, 
+  - the tailable cursor “tails” the end of a capped collection. 
+  - As new documents are inserted into the capped collection, you can use the tailable cursor to continue retrieving documents.
+
+
+	
